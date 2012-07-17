@@ -25,6 +25,7 @@
     ))
 
 (defn read-conf [file]
-  (clojurefy (parse-file file)))
+  (->> file parse-file clojurefy))
 
-;(read-conf "test.properties")
+(defn read-resource [uri]
+  (->> uri io/resource parse-file clojurefy))
